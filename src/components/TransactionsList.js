@@ -10,7 +10,8 @@ const TransactionsList = (props) => {
   }
 
   const filteredTransactions = () => {
-    return props.transactions.filter(transaction => transaction.category.toLowerCase().includes(props.input.toLowerCase()) || transaction.description.toLowerCase().includes(props.input.toLowerCase()))
+    return props.transactions.filter(transaction => {
+      return transaction.category.toLowerCase().includes(props.input.toLowerCase()) || transaction.description.toLowerCase().includes(props.input.toLowerCase())})
   }
 
   return (

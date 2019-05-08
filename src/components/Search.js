@@ -2,7 +2,7 @@ import React from 'react'
 
 const Search = (props) => {
 
-  const handleChange = (e ) => {
+  const handleChange = ( e ) => {
     props.changeInput(e.target.value)
   }
 
