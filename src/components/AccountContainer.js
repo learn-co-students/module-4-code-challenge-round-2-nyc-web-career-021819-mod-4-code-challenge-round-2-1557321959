@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TransactionsList from './TransactionsList'
 import Search from './Search'
-import {transactions} from '../transactionsData'
+// import {transactions} from '../transactionsData'
 
 class AccountContainer extends Component {
 
@@ -43,10 +43,9 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.state.search)
     return (
       <div>
-        <Search handleChange={this.handleChange} searchState = {this.state.search}/>
+        <Search handleChange={this.handleChange} searchState={this.state.search}/>
         <TransactionsList transactions={this.renderTransactionsByFilter(this.state.transactions)}/>
       </div>
     )
