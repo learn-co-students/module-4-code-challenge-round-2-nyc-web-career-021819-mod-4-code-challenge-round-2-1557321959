@@ -1,29 +1,26 @@
 import React, { Component } from 'react'
 import TransactionsList from './TransactionsList'
 import Search from './Search'
-import {transactions} from '../transactionsData'
 
 class AccountContainer extends Component {
 
-  constructor() {
-    super()
-
-    // get a default state working with the data imported from TransactionsData
-    // use this to get the functionality working
-    // then replace the default transactions with a call to the API
-
+  state = {
+    input: ''
   }
 
-  handleChange(event) {
-    // your code here
+  onChange = (e) => {
+    this.setState({ input: e.target.value })
+    console.log(e.target.value)
   }
+
 
   render() {
-
+    console.log(this.props.transactions)
+    let filteredTrans = this.props.transactions.filter(trans => trans.description.includes(this.state.input) || trans.category.includes(this.state.input))
     return (
       <div>
-        <Search />
-        <TransactionsList />
+        <Search onChange={this.onChange} />
+        <TransactionsList transactions={filteredTrans} />
       </div>
     )
   }
