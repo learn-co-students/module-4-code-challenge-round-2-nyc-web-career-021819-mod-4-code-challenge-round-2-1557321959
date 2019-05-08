@@ -2,8 +2,23 @@ import React, { Component } from 'react'
 import TransactionsList from './TransactionsList'
 import Search from './Search'
 import {transactions} from '../transactionsData'
+const API = "https://boiling-brook-94902.herokuapp.com/transactions"
 
 class AccountContainer extends Component {
+
+  state={
+    transactions: []
+  }
+
+  componentDidMount() {
+    fetch(API)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({
+        transactions: data
+      })
+    })
+  }
 
   constructor() {
     super()
@@ -15,18 +30,19 @@ class AccountContainer extends Component {
   }
 
   handleChange(event) {
-    // your code here
+    console.log("typing!")
   }
 
   render() {
-
+    // console.log(this.state.transactions)
     return (
       <div>
-        <Search />
-        <TransactionsList />
+        <Search onChange={this.handleChange(event)}/>
+        <TransactionsList transactions={this.state.transactions}/>
       </div>
     )
   }
 }
 
+// Ran out of time and did not complete search feature.
 export default AccountContainer
