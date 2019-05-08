@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Search = () => {
+const Search = (props) => {
+  console.log(props)
   return (
     <div className="ui huge fluid icon input">
-      <input
+      <input onChange={props.onChange}
         type="text"
         placeholder={"Search your Recent Transactions"}
       />
